@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F5F5DC;
+            color: #333;
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            background: url('wl.jpg') no-repeat center center/cover;
+            height: 90vh;
+            color: white;
+        }
+
+        .hero .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 18px;
+            color: #f5efe5;
+            background-color: #352315;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #C1A281;
+        }
+
+        .opening-time {
+            background-color: #352315;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 20px;
+            margin: 20px auto;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px; /* Adjust width as needed */
+        }
+
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .about, .products, .contact {
+            background-color: white;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .products .product {
+            flex: 1;
+            max-width: 30%;
+            margin: 90px 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        .products .product img {
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        .products .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .products h2 {
+            text-align: center; 
+        }
+
+        footer {
+            background-color: #231709;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 15px 30px;
+            background-color: #352315;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #C1A281;
+        }
+
+        
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s;
+        }
+
+        .popup-content {
+            position: relative;
+            margin: 5% auto;
+            padding: 0;
+            width: 80%;
+            max-width: 700px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {background-color: rgba(0, 0, 0, 0);}
+            to {background-color: rgba(0, 0, 0, 0.8);}
+        }
+
+        @keyframes slideIn {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #333;
+            font-size: 35px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .popup-content video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+    
+        .video-container {
+            width: 100%;
+            padding-top: 56.25%; 
+            position: relative;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <button id="openPopup" class="button">Watch Video</button>
+    </section>
+
+    <section class="about">
+        <h2>About Us</h2>
+        <p>We offer a wide variety of stylish and comfortable hijabs for every occasion. Our mission is to provide high-quality, fashionable hijabs that make you feel confident and beautiful.</p>
+        <a href="about.html" class="button">See more</a>
+    </section>
+    <section class="products">
+        <h2>Our Products</h2>
+        <div class="product">
+            <img src="img/pl.jpg" alt="Hijab 1">
+            <h3>Classic Hijab</h3>
+            <p>A timeless piece that goes well with any outfit.</p>
+            <a href="printed.html" class="button">Printed</a>
+        </div>
+        <div class="product">
+            <img src="img/pt.jpg" alt="Hijab 2">
+            <h3>Elegant Hijab</h3>
+            <p>Perfect for formal occasions and special events.</p>
+            <a href="non.html" class="button">Non-Printed</a>
+        </div>
+        <div class="product">
+            <img src="img/sl.jpg" alt="Hijab 3">
+            <h3>Casual Hijab</h3>
+            <p>Comfortable and stylish for everyday wear.</p>
+            <a href="casual.html" class="button">Casual</a>
+        </div>
+    </section>
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>    
+    </section>
+    <div class="opening-time">
+        Packing hour: Mon-Sat: 9am - 9pm | Sun: Closed
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Rana Scarves IML470. All rights reserved.</p>
+    </footer>
+
+    
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <div class="video-container">
+                <video controls>
+                    <source src="vid.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const openPopup = document.getElementById('openPopup');
+        const popup = document.getElementById('popup');
+        const close = document.querySelector('.close');
+
+        openPopup.addEventListener('click', () => {
+            popup.style.display = 'block';
+        });
+
+        close.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for contacting us!');
+            this.reset(); // Clear the form
+        });
+    </script>
+</body>
+</html>

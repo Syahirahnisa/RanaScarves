@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rana Scarves</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #231709;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .navbar-buttons {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .navbar a {
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px 23px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .dropdown {
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 20px 23px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            font-size: 18px;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: #ddd;
+            color: black;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 7px 10px;
+        }
+        .cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 4px 8px;
+            position: absolute;
+            top: 20px;
+            left: 35px;
+        }
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <img src="R.png" width="80" height="80">
+    <div class="navbar-buttons">
+        <a href="javascript:void(0)" onclick="loadContent('home.html')">Home</a>
+        <a href="javascript:void(0)" onclick="loadContent('product.html')">Product</a>
+        <div class="dropdown">
+            <button class="dropbtn">Collections 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="javascript:void(0)" onclick="loadContent('printed.html')">Printed</a>
+                <a href="javascript:void(0)" onclick="loadContent('non.html')">Non-Printed</a>
+                <a href="javascript:void(0)" onclick="loadContent('casual.html')">Casual</a>
+            </div>
+        </div> 
+        <a href="javascript:void(0)" onclick="loadContent('about.html')">About</a>
+        <div class="cart-icon" onclick="showCart()">
+            <img src="cart.jpg" alt="Cart" width="40" height="40">
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </div>
+</div>
+
+<iframe id="contentFrame" src="home.html"></iframe>
+
+<script>
+    let cart = [];
+
+    function loadContent(page) {
+        document.getElementById('contentFrame').src = page;
+    }
+
+    function addToCart(item) {
+        cart.push(item);
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        document.getElementById('cartCount').innerText = cart.length;
+    }
+
+    function showCart() {
+        alert('Cart: ' + cart.join(', '));
+    }
+
+    window.addEventListener('message', function(event) {
+        if (event.data && event.data.type === 'addToCart') {
+            addToCart(event.data.item);
+        }
+    });
+</script>
+
+<script>
+    function addToCartFromIframe(item) {
+        window.parent.postMessage({ type: 'addToCart', item: item }, '*');
+    }
+</script>
+</body>
+</html>

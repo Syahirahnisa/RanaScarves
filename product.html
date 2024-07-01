@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hijab Store</title>
+    <style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.scarf-item {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #795C34;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #795C34;
+}
+
+.square-section .flex-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: stretch;
+}
+
+.square-section .scarf-item {
+    width: calc(33.33% - 20px); 
+}
+
+@media (max-width: 768px) {
+    .square-section .flex-container {
+        flex-wrap: wrap;
+    }
+    
+    .square-section .scarf-item {
+        width: 100%; 
+        margin-bottom: 20px; 
+    }
+}
+
+
+.square-section .scarf-item {
+    width: 300px;
+    height: 300px; 
+    padding: 20px;
+    background-color: #fff; 
+    border: 1px solid #ccc; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+}
+
+.square-section .scarf-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.square-section .scarf-item p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.square-section .scarf-item button {
+    background-color: #795C34;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.square-section .scarf-item button:hover {
+    background-color: #b9996d;
+}
+
+
+.square-section .flex-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: stretch; 
+    margin-bottom: 20px; 
+}
+
+.square-section .scarf-item {
+    width: calc(33.33% - 20px); 
+}
+
+@media (max-width: 768px) {
+    .square-section .flex-container {
+        flex-wrap: wrap;
+    }
+    
+    .square-section .scarf-item {
+        width: 100%; 
+        margin-bottom: 20px; 
+    }
+}
+
+.button.more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #795C34;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+
+
+.button.more:hover {
+    background-color: #b9996d;
+}
+ 
+footer {
+            background-color: #231709;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <main>
+        <section id="printed-scarves" class="square-section">
+            <h2>Printed Bawal</h2>
+            <div class="flex-container">
+                <div class="scarf-item">
+                    <img src="img/p1.jpg" alt="Printed Shawl">
+                    <p>Farha collection. <br>Price: RM39</p>
+                    <button onclick="addToCartFromIframe('Scarve1')">Add to Cart</button>
+                </div>
+                <div class="scarf-item">
+                    <img src="img/p2.jpg" alt="Printed Shawl">
+                    <p>Bety collection. <br>Price: RM39</p>
+                    <button onclick="addToCartFromIframe('Scarve1')">Add to Cart</button>
+                </div>
+                <div class="scarf-item">
+                    <img src="img/p3.jpg" alt="Printed Shawl">
+                    <a href="printed.html" class="button more" style="margin-top: 10px;">Click for More</a>
+                </div>                
+            </div>
+        </section>
+        
+        <section id="non-printed-scarves" class="square-section">
+            <h2>Non-Printed Bawal</h2>
+            <div class="flex-container">
+            <div class="scarf-item">
+                <img src="img/pl1.jpg" alt="Non-Printed Shawl">
+                <p>Ocean blue <br>.Price: RM29</p>
+                <button onclick="addToCartFromIframe('Scarve1')">Add to Cart</button>
+            </div>
+            <div class="scarf-item">
+                <img src="img/pl2.jpg" alt="Non-Printed Shawl">
+                <p>Lilac.<br> Price: RM29</p>
+                <button onclick="addToCartFromIframe('Scarve1')">Add to Cart</button>
+            </div>
+            <div class="scarf-item">
+                <img src="img/pl3.jpg" alt="Printed Shawl">
+                <a href="non.html" class="button more" style="margin-top: 10px;">Click for More</a>
+            </div>         
+            </div>
+        </section>
+
+        <section id="casual-wear" class="square-section">
+            <h2>Casual Wear</h2>
+            <div class="flex-container">
+            <div class="scarf-item">
+                <img src="img/c1.jpg" alt="Casual Wear Shawl">
+                <p> casual wear shawl.<br> Price: RM25</p>
+                <button onclick="addToCartFromIframe('Scarve1')">Add to Cart</button>
+            </div>     
+            <div class="scarf-item">
+                <img src="img/c2.jpg" alt="Casual Wear Shawl">
+                <p>casual wear shawl.<BR> Price: RM25</p>
+                <button onclick="addToCartFromIframe('Scarve1')">Add to Cart</button>
+            </div>  
+            <div class="scarf-item">
+                <img src="img/c3.jpg" alt="Printed Shawl">
+                <a href="casual.html" class="button more" style="margin-top: 10px;">Click for More</a>
+            </div>         
+        </div>  
+        </section>
+    </main>
+    <script>
+        
+        function addToCartFromIframe(item) {
+            window.parent.postMessage({ type: 'addToCart', item: item }, '*');
+        }
+    </script>
+</body>
+
+<footer>
+    <p>&copy; 2024 Rana Scarves IML470. All rights reserved.</p>
+</footer>
+
+</html>
